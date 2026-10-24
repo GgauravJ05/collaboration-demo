@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Login</title>
+</head>
+<body>
+  <h2>Student Login</h2>
+  <form id="loginForm">
+    <label for="username">Username</label>
+    <input type="text" id="username" name="username">
+
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password">
+
+    <button type="submit">Login</button>
+    <p id="error" style="color: red;"></p>
+  </form>
+
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const user = document.getElementById("username").value.trim();
+      const pass = document.getElementById("password").value;
+      const error = document.getElementById("error");
+      if (user === "" || pass === "") {
+        error.textContent = "Username and password are required.";
+      } else if (pass.length < 6) {
+        error.textContent = "Password must be at least 6 characters.";
+      } else {
+        error.textContent = "";
+        alert("Welcome, " + user + "!");
+      }
+    });
+  </script>
+</body>
+</html>
